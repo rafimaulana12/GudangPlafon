@@ -1,0 +1,17 @@
+[Unit]
+Description=Warehouse Item Watcher Web Service
+After=network.target mysql.service
+Wants=mysql.service
+
+[Service]
+Type=simple
+User=hermes
+Group=hermes
+WorkingDirectory=/home/hermes/warehouse-app
+ExecStart=/home/hermes/warehouse-app/warehouse-server
+Restart=always
+RestartSec=3
+EnvironmentFile=/home/hermes/warehouse-app/.env
+
+[Install]
+WantedBy=multi-user.target
